@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this software or its dataset, please cite it using the metadata below."
+type: software
+title: "Color Classification with KNN: Bilingual Persian/English"
+abstract: >-
+  A two-stage hierarchical K-nearest-neighbors system that predicts bilingual
+  Persian/English color names from RGB hex codes. Stage 1 predicts a coarse
+  color family; Stage 2 retrieves the closest exact shade in CIE L*a*b* space.
+version: "1.0.0"
+date-released: "2026-11-06"
+license: MIT
+url: "https://github.com/kopolart/knn-color-classification"
+repository-code: "https://github.com/kopolart/knn-color-classification"
+keywords:
+  - KNN
+  - k-nearest-neighbors
+  - color classification
+  - color naming
+  - Persian
+  - scikit-learn
+  - machine learning
+authors:
+  - family-names: Yousefi
+    given-names: Ali
+    affiliation: "KopolArt"
+    website: "https://kopolart.ir"
+references:
+  - type: dataset
+    title: "KopolArt Color Collection"
+    authors:
+      - family-names: Yousefi
+        given-names: Ali
+    url: "https://kopolart.ir/colors"
+    license: CC-BY-4.0
+    year: 2026
+    notes: >-
+      Dataset curated by Ali Yousefi (KopolArt). Attribution required:
+      "کپل‌آرت – Ali Yousefi" with a link to https://kopolart.ir/colors.

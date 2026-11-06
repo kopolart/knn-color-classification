@@ -1,0 +1,42 @@
+name: CI
+
+"on":
+  push:
+  pull_request:
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+
+    env:
+      MPLBACKEND: Agg
+      PYTHONIOENCODING: utf-8
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Regenerate the enriched dataset
+        run: python prepare_dataset.py
+
+      - name: Train and evaluate the pipeline
+        run: python train.py
+
+      - name: Smoke-test inference
+        run: python predict.py FF1818 388E3C
+
+      - name: Smoke-test the beginner demo
+        run: python simple_version/simple_demo.py
