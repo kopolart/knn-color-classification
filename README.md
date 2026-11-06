@@ -18,6 +18,7 @@
 
 - [Project Overview](#-project-overview)
 - [Results](#-results)
+- [Sample Predictions](#-sample-predictions)
 - [Why Two Stages?](#-why-two-stages)
 - [Dataset](#-dataset)
 - [Repository Structure](#-repository-structure)
@@ -71,6 +72,16 @@ Metrics are measured on the held-out 20% test split (`random_state=42`) of the m
 
 ---
 
+## 🎯 Sample Predictions
+
+Output of `python predict.py` on a 15-color palette spanning warm, cool, and neutral colors:
+
+![Two-stage predictions for a 15-color palette](assets/sample_predictions.png)
+
+`Base` is the Stage 1 color family, `Shade` is the Stage 2 retrieved name, and `Delta-E` is the CIE L\*a\*b\* distance to the matched sample (lower is closer). These exact results are reproducible from the published dataset and the fixed train/test split.
+
+---
+
 ## 🔍 Why Two Stages?
 
 The core challenge is **class sparsity**: 608 samples spread over 313 shade names. A naive single-stage KNN treats `Dark Red` and `Red` as completely different classes, so a near-miss is recorded as a total error.
@@ -115,7 +126,8 @@ The code in this repository is MIT-licensed. The dataset is **not** MIT-licensed
 │   └── PRESENTATION_GUIDE.md       # Academic presentation guide (Persian/English)
 │
 ├── assets/
-│   └── confusion_matrix.png        # Pre-generated 14-family confusion matrix
+│   ├── confusion_matrix.png        # Pre-generated 14-family confusion matrix
+│   └── sample_predictions.png      # 15-color two-stage prediction demo
 │
 ├── color_classification_knn.ipynb   # ⭐ Full advanced notebook
 ├── prepare_dataset.py               # Raw CSV → enriched CSV
